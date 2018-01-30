@@ -26,46 +26,44 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="235" id="Mcd-8a-yQz">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="235"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="259" id="Mcd-8a-yQz" customClass="MovieCell" customModule="Flix" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="259"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mcd-8a-yQz" id="v7R-4s-Ent">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="234.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="258.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E2n-0X-Zqe">
-                                                    <rect key="frame" x="15" y="11" width="120" height="168"/>
-                                                    <color key="backgroundColor" red="0.91806789340101524" green="0.0" blue="0.11113586330407457" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Greatest Showman" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWd-nR-J8i">
-                                                    <rect key="frame" x="143" y="9" width="217" height="23"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Greatest Showman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWd-nR-J8i">
+                                                    <rect key="frame" x="143" y="9" width="217" height="21.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY3-54-RTg">
-                                                    <rect key="frame" x="143" y="46" width="217" height="122"/>
+                                                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY3-54-RTg">
+                                                    <rect key="frame" x="143" y="51" width="217" height="122"/>
                                                     <string key="text">The story of American showman P.T. Barnum, founder of the circus that became the famous traveling Ringling Bros. and Barnum &amp; Bailey Circus.</string>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E2n-0X-Zqe">
+                                                    <rect key="frame" x="15" y="33" width="120" height="192"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.91806789340101524" green="0.0" blue="0.11113586330407457" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="yWd-nR-J8i" secondAttribute="bottom" constant="202.5" id="AZq-8O-PlJ"/>
-                                                <constraint firstAttribute="trailing" secondItem="yWd-nR-J8i" secondAttribute="trailing" constant="15" id="FBm-zP-Cf2"/>
-                                                <constraint firstItem="CY3-54-RTg" firstAttribute="top" secondItem="v7R-4s-Ent" secondAttribute="top" constant="46" id="FE4-Po-Gvk"/>
-                                                <constraint firstAttribute="bottom" secondItem="CY3-54-RTg" secondAttribute="bottom" constant="66.5" id="J4p-3c-6eV"/>
-                                                <constraint firstAttribute="bottom" secondItem="E2n-0X-Zqe" secondAttribute="bottom" constant="55.5" id="K8C-W3-nd6"/>
-                                                <constraint firstAttribute="trailing" secondItem="E2n-0X-Zqe" secondAttribute="trailing" constant="240" id="OXQ-oO-n0q"/>
-                                                <constraint firstItem="yWd-nR-J8i" firstAttribute="top" secondItem="v7R-4s-Ent" secondAttribute="top" constant="9" id="PsX-RZ-d4N"/>
-                                                <constraint firstAttribute="trailing" secondItem="CY3-54-RTg" secondAttribute="trailing" constant="15" id="efS-CG-hgG"/>
-                                                <constraint firstItem="yWd-nR-J8i" firstAttribute="leading" secondItem="v7R-4s-Ent" secondAttribute="leading" constant="143" id="hcs-bO-qnH"/>
-                                                <constraint firstItem="E2n-0X-Zqe" firstAttribute="leading" secondItem="v7R-4s-Ent" secondAttribute="leading" constant="15" id="i1D-Ks-ciP"/>
-                                                <constraint firstItem="CY3-54-RTg" firstAttribute="leading" secondItem="v7R-4s-Ent" secondAttribute="leading" constant="143" id="wxG-5o-FuH"/>
-                                                <constraint firstItem="E2n-0X-Zqe" firstAttribute="top" secondItem="v7R-4s-Ent" secondAttribute="top" constant="11" id="znh-Pn-DKq"/>
+                                                <constraint firstItem="CY3-54-RTg" firstAttribute="top" secondItem="v7R-4s-Ent" secondAttribute="top" constant="51" id="EW6-N9-n2K"/>
+                                                <constraint firstItem="CY3-54-RTg" firstAttribute="leading" secondItem="v7R-4s-Ent" secondAttribute="leading" constant="143" id="eZj-QP-Vtd"/>
+                                                <constraint firstAttribute="bottom" secondItem="CY3-54-RTg" secondAttribute="bottom" constant="85.5" id="g95-H1-h8b"/>
+                                                <constraint firstAttribute="trailing" secondItem="CY3-54-RTg" secondAttribute="trailing" constant="15" id="isA-T3-J1l"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="overviewLabel" destination="CY3-54-RTg" id="9dd-LK-TlA"/>
+                                            <outlet property="titleLabel" destination="yWd-nR-J8i" id="gNZ-HK-sSA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
