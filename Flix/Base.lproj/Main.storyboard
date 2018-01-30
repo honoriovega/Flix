@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,15 +13,72 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="NowPlayingViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4QR-8Y-nh0"/>
+                        <viewControllerLayoutGuide type="bottom" id="hrA-o8-nUb"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C0c-fK-uss">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="235" id="Mcd-8a-yQz">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="235"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mcd-8a-yQz" id="v7R-4s-Ent">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="234.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E2n-0X-Zqe">
+                                                    <rect key="frame" x="15" y="11" width="120" height="168"/>
+                                                    <color key="backgroundColor" red="0.91806789340101524" green="0.0" blue="0.11113586330407457" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Greatest Showman" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWd-nR-J8i">
+                                                    <rect key="frame" x="143" y="9" width="217" height="23"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY3-54-RTg">
+                                                    <rect key="frame" x="143" y="46" width="217" height="122"/>
+                                                    <string key="text">The story of American showman P.T. Barnum, founder of the circus that became the famous traveling Ringling Bros. and Barnum &amp; Bailey Circus.</string>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="yWd-nR-J8i" secondAttribute="bottom" constant="202.5" id="AZq-8O-PlJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="yWd-nR-J8i" secondAttribute="trailing" constant="15" id="FBm-zP-Cf2"/>
+                                                <constraint firstItem="CY3-54-RTg" firstAttribute="top" secondItem="v7R-4s-Ent" secondAttribute="top" constant="46" id="FE4-Po-Gvk"/>
+                                                <constraint firstAttribute="bottom" secondItem="CY3-54-RTg" secondAttribute="bottom" constant="66.5" id="J4p-3c-6eV"/>
+                                                <constraint firstAttribute="bottom" secondItem="E2n-0X-Zqe" secondAttribute="bottom" constant="55.5" id="K8C-W3-nd6"/>
+                                                <constraint firstAttribute="trailing" secondItem="E2n-0X-Zqe" secondAttribute="trailing" constant="240" id="OXQ-oO-n0q"/>
+                                                <constraint firstItem="yWd-nR-J8i" firstAttribute="top" secondItem="v7R-4s-Ent" secondAttribute="top" constant="9" id="PsX-RZ-d4N"/>
+                                                <constraint firstAttribute="trailing" secondItem="CY3-54-RTg" secondAttribute="trailing" constant="15" id="efS-CG-hgG"/>
+                                                <constraint firstItem="yWd-nR-J8i" firstAttribute="leading" secondItem="v7R-4s-Ent" secondAttribute="leading" constant="143" id="hcs-bO-qnH"/>
+                                                <constraint firstItem="E2n-0X-Zqe" firstAttribute="leading" secondItem="v7R-4s-Ent" secondAttribute="leading" constant="15" id="i1D-Ks-ciP"/>
+                                                <constraint firstItem="CY3-54-RTg" firstAttribute="leading" secondItem="v7R-4s-Ent" secondAttribute="leading" constant="143" id="wxG-5o-FuH"/>
+                                                <constraint firstItem="E2n-0X-Zqe" firstAttribute="top" secondItem="v7R-4s-Ent" secondAttribute="top" constant="11" id="znh-Pn-DKq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="C0c-fK-uss" id="feD-rF-XQF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="85.5" y="147.5"/>
         </scene>
     </scenes>
 </document>
