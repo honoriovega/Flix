@@ -14,12 +14,15 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var movies : [[String : Any]] = []
     var refreshControl : UIRefreshControl!
-    
+
     override func viewDidLoad() {
+
         super.viewDidLoad()
-        
+        activityIndicator.startAnimating()
+
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
@@ -28,7 +31,6 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
         tableView.dataSource = self
 
         fetchMovies()
-      
     }
     
     @objc func didPullToRefresh(_ refreshControl : UIRefreshControl) {
@@ -36,6 +38,7 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
     }
     
     func fetchMovies() {
+
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
         
         
@@ -57,12 +60,13 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
                 self.movies = movies
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
-                
+                self.activityIndicator.stopAnimating()
                 
             }
         }
         
         task.resume()
+
     }
     
     
