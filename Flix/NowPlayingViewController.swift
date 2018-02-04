@@ -9,11 +9,12 @@
 import UIKit
 import AlamofireImage
 
-class NowPlayingViewController: UIViewController,UITableViewDataSource {
+class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchBarDelegate {
 
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var movies : [[String : Any]] = []
     var refreshControl : UIRefreshControl!
@@ -21,13 +22,14 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
      // Set up the alert controller
      let alertController = UIAlertController(title: "Cannot Get Movies", message: "The internet connection appears to be offline.", preferredStyle: .alert)
 
+    var filteredData: [[String : Any]] = []
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
         activityIndicator.startAnimating()
+        searchBar.delegate = self
 
-        
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
         
@@ -43,6 +45,7 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
         alertController.addAction(tryAgainAction)
 
         fetchMovies()
+
     }
     
     @objc func didPullToRefresh(_ refreshControl : UIRefreshControl) {
@@ -74,6 +77,7 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
                 let movies = dataDictionary["results"] as! [[String : Any]]
                 
                 self.movies = movies
+                self.filteredData = movies
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
                 self.activityIndicator.stopAnimating()
@@ -92,7 +96,7 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return filteredData.count
     }
     
     
@@ -101,8 +105,7 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
         
-        
-        let movie = movies[indexPath.row]
+        let movie = filteredData[indexPath.row]
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
         cell.titleLabel.text = title
@@ -115,6 +118,20 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
         
         return cell
     }
+    
+    // This method updates filteredData based on the text in the Search Box
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredData = searchText.isEmpty ? movies : movies.filter { (item: [String : Any]) -> Bool in
+            // If dataItem matches the searchText, return true to include it
+            
+            let title = item["title"] as! String
+            return title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        
+        tableView.reloadData()
+    }
+
     
 
     override func didReceiveMemoryWarning() {
