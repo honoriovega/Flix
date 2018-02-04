@@ -88,10 +88,6 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
         task.resume()
 
     }
-    func tryAgain() {
-        
-        fetchMovies()
-    }
     
     
     
@@ -101,9 +97,19 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
+        
+        let placeHolderURL = URL(string: "https://httpbin.org/image/png")!
+        let smoke = UIImage(named: "AppIcon")!
+        
+        cell.posterImageView.af_setImage(withURL: placeHolderURL, placeholderImage: smoke)
+        
+        
+        let placeholderImageURL = URL(string: "https://httpbin.org/image/png")!
+                cell.posterImageView.af_setImage(withURL: placeholderImageURL)
         
         let movie = filteredData[indexPath.row]
         let title = movie["title"] as! String
