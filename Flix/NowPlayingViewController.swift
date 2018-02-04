@@ -17,6 +17,10 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var movies : [[String : Any]] = []
     var refreshControl : UIRefreshControl!
+    
+     // Set up the alert controller
+     let alertController = UIAlertController(title: "Cannot Get Movies", message: "The internet connection appears to be offline.", preferredStyle: .alert)
+
 
     override func viewDidLoad() {
 
@@ -29,6 +33,14 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
         
         tableView.insertSubview(refreshControl, at: 0)
         tableView.dataSource = self
+        
+        
+        // create an OK action
+        let tryAgainAction = UIAlertAction(title: "Try Again", style: .default) { (action) in
+            self.fetchMovies()
+        }
+        // add the OK action to the alert controller
+        alertController.addAction(tryAgainAction)
 
         fetchMovies()
     }
@@ -52,6 +64,10 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
             
             if let error = error {
                 print(error.localizedDescription)
+            
+                self.present(self.alertController, animated: true) {
+                   
+                }
             } else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 
@@ -67,6 +83,10 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
         
         task.resume()
 
+    }
+    func tryAgain() {
+        
+        fetchMovies()
     }
     
     
