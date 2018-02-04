@@ -22,8 +22,6 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
      // Set up the alert controller
      let alertController = UIAlertController(title: "Cannot Get Movies", message: "The internet connection appears to be offline.", preferredStyle: .alert)
 
-    var filteredData: [[String : Any]] = []
-
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -45,6 +43,7 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
         alertController.addAction(tryAgainAction)
 
         fetchMovies()
+        
 
     }
     
@@ -75,13 +74,10 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 
                 let movies = dataDictionary["results"] as! [[String : Any]]
-                
                 self.movies = movies
-                self.filteredData = movies
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
                 self.activityIndicator.stopAnimating()
-                
             }
         }
         
@@ -89,10 +85,50 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
 
     }
     
+    func searchForMovie(_ query : String) {
+        
+        
+        // a07e22bc18f5cb106bfe4cc1f83ad8ed
+        
+        let query = query.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil)
+
+        
+        let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&query=" + query)!
+        
+        
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        
+        let task = session.dataTask(with: request) { (data, response,error) in
+            
+            // This will run when the network request returns
+            
+            if let error = error {
+                print(error.localizedDescription)
+                
+                self.present(self.alertController, animated: true) {
+                    
+                }
+            } else if let data = data {
+                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                
+                let movies = dataDictionary["results"] as! [[String : Any]]
+                
+                self.movies = movies
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        
+        task.resume()
+    }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredData.count
+        return movies.count
     }
     
     
@@ -102,40 +138,47 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
         
-        let placeHolderURL = URL(string: "https://httpbin.org/image/png")!
-        let smoke = UIImage(named: "AppIcon")!
+        let placeHolderURL = URL(string: "http://l.yimg.com/os/mit/media/m/entity/images/movie_placeholder-103642.png")!
+        let placeholderImage = UIImage(named: "now_playing_tabbar_item")!
         
-        cell.posterImageView.af_setImage(withURL: placeHolderURL, placeholderImage: smoke)
+        let filter = AspectScaledToFillSizeWithRoundedCornersFilter(
+            size: cell.posterImageView.frame.size,
+            radius: 20.0
+        )
         
+        cell.posterImageView.af_setImage(
+            withURL: placeHolderURL,
+            placeholderImage: placeholderImage,
+            filter: filter,
+            imageTransition: .crossDissolve(0.8)
+        )
+  
         
-        let placeholderImageURL = URL(string: "https://httpbin.org/image/png")!
-                cell.posterImageView.af_setImage(withURL: placeholderImageURL)
-        
-        let movie = filteredData[indexPath.row]
+        let movie = movies[indexPath.row]
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         
-        let posterPathString = movie["poster_path"] as! String
-        let baseURLString = "https://image.tmdb.org/t/p/w500/"
-        let posterURL = URL(string: baseURLString + posterPathString)!
-        cell.posterImageView.af_setImage(withURL: posterURL)
+        if let posterPathString = movie["poster_path"] as? String {
+            
+            let baseURLString = "https://image.tmdb.org/t/p/w500/"
+            let posterURL = URL(string: baseURLString + posterPathString)!
+            cell.posterImageView.af_setImage(withURL: posterURL)
+        }
+    
+        
         
         return cell
     }
     
     // This method updates filteredData based on the text in the Search Box
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        filteredData = searchText.isEmpty ? movies : movies.filter { (item: [String : Any]) -> Bool in
-            // If dataItem matches the searchText, return true to include it
-            
-            let title = item["title"] as! String
-            return title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        if(!searchText.isEmpty) {
+            searchForMovie(searchText)
+
         }
-        
-        tableView.reloadData()
+    
     }
 
     
