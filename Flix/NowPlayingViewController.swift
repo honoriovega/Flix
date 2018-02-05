@@ -47,54 +47,22 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
 
     }
     
-    @objc func didPullToRefresh(_ refreshControl : UIRefreshControl) {
-        fetchMovies()
-    }
     
-    func fetchMovies() {
-
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
+    func fetchMovies(query : String = "") {
         
+        var url : URL!
         
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        
-        let task = session.dataTask(with: request) { (data, response,error) in
+        // If the query is empty just fetch the latest movies
+        if(query.isEmpty) {
+            url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
             
-            // This will run when the network request returns
+            // otherwise query for the search term provided
+        } else {
+            let query = query.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil)
             
-            if let error = error {
-                print(error.localizedDescription)
             
-                self.present(self.alertController, animated: true) {
-                   
-                }
-            } else if let data = data {
-                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                
-                let movies = dataDictionary["results"] as! [[String : Any]]
-                self.movies = movies
-                self.tableView.reloadData()
-                self.refreshControl.endRefreshing()
-                self.activityIndicator.stopAnimating()
-            }
+            url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&query=" + query)!
         }
-        
-        task.resume()
-
-    }
-    
-    func searchForMovie(_ query : String) {
-        
-        
-        // a07e22bc18f5cb106bfe4cc1f83ad8ed
-        
-        let query = query.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil)
-
-        
-        let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&query=" + query)!
-        
         
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         
@@ -114,7 +82,6 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 
                 let movies = dataDictionary["results"] as! [[String : Any]]
-                
                 self.movies = movies
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
@@ -123,9 +90,12 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
         }
         
         task.resume()
+        
     }
     
-    
+    @objc func didPullToRefresh(_ refreshControl : UIRefreshControl) {
+        fetchMovies()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
@@ -138,6 +108,7 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
         
+        // Placeholders
         let placeHolderURL = URL(string: "http://l.yimg.com/os/mit/media/m/entity/images/movie_placeholder-103642.png")!
         let placeholderImage = UIImage(named: "now_playing_tabbar_item")!
         
@@ -160,14 +131,13 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         
+        // If image is available use it
         if let posterPathString = movie["poster_path"] as? String {
             
             let baseURLString = "https://image.tmdb.org/t/p/w500/"
             let posterURL = URL(string: baseURLString + posterPathString)!
             cell.posterImageView.af_setImage(withURL: posterURL)
         }
-    
-        
         
         return cell
     }
@@ -175,10 +145,11 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
     // This method updates filteredData based on the text in the Search Box
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if(!searchText.isEmpty) {
-            searchForMovie(searchText)
+            fetchMovies(query : searchText)
 
+        } else {
+            fetchMovies()
         }
-    
     }
 
     
