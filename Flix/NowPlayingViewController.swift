@@ -121,7 +121,7 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
             withURL: placeHolderURL,
             placeholderImage: placeholderImage,
             filter: filter,
-            imageTransition: .crossDissolve(0.8)
+            imageTransition: .crossDissolve(0.2)
         )
   
         
