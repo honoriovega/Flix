@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="Vr8-1m-wiF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Now Playing View Controller-->
+        <!--Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="NowPlayingViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,11 +31,11 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="259" id="Mcd-8a-yQz" customClass="MovieCell" customModule="Flix" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="259" id="Mcd-8a-yQz" customClass="MovieCell" customModule="Flix" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="84" width="375" height="259"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mcd-8a-yQz" id="v7R-4s-Ent">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="258.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="258.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Greatest Showman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWd-nR-J8i">
@@ -46,7 +46,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY3-54-RTg">
-                                                    <rect key="frame" x="143" y="51" width="217" height="122"/>
+                                                    <rect key="frame" x="143" y="51" width="184" height="122"/>
                                                     <string key="text">The story of American showman P.T. Barnum, founder of the circus that became the famous traveling Ringling Bros. and Barnum &amp; Bailey Circus.</string>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -68,6 +68,7 @@
                                             <outlet property="overviewLabel" destination="CY3-54-RTg" id="9dd-LK-TlA"/>
                                             <outlet property="posterImageView" destination="E2n-0X-Zqe" id="JD5-QM-lH6"/>
                                             <outlet property="titleLabel" destination="yWd-nR-J8i" id="gNZ-HK-sSA"/>
+                                            <segue destination="QKl-Rg-nM0" kind="push" id="Apd-is-HGX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -80,6 +81,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Movies" id="bvT-bE-mRQ"/>
                     <connections>
                         <outlet property="activityIndicator" destination="g39-PC-fka" id="oNX-cF-Bb2"/>
                         <outlet property="searchBar" destination="nDy-Bx-Caj" id="t8l-sY-pJn"/>
@@ -88,7 +90,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="85.5" y="147.5"/>
+            <point key="canvasLocation" x="297.5" y="147.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HFm-s6-JVn">
+            <objects>
+                <viewController id="QKl-Rg-nM0" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zsU-Dg-2gy"/>
+                        <viewControllerLayoutGuide type="bottom" id="PyV-Xf-INy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DPY-yr-pvE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zia-ZO-Zwe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EqJ-Gb-3kB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="819.5" y="138.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="o18-HK-3ZR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vr8-1m-wiF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CZk-xJ-3wf">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="K0H-Dv-o2i"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ohg-Yc-BG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85" y="147"/>
         </scene>
     </scenes>
 </document>
