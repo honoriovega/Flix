@@ -9,6 +9,26 @@
 import UIKit
 import AlamofireImage
 
+// taken from https://gist.github.com/ViccAlexander/0224ab078f76a3af6d79986369d5240b
+extension String {
+    /**
+     Truncates the string to the specified length number of characters and appends an optional trailing string if longer.
+     
+     - Parameter length: A `String`.
+     - Parameter trailing: A `String` that will be appended after the truncation.
+     
+     - Returns: A `String` object.
+     */
+    func truncate(length: Int, trailing: String = "…") -> String {
+        if self.characters.count > length {
+            return String(self.characters.prefix(length)) + trailing
+        } else {
+            return self
+        }
+    }
+}
+
+
 class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchBarDelegate {
 
     
@@ -129,8 +149,9 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
         cell.titleLabel.text = title
-        cell.overviewLabel.text = overview
-        
+        cell.full_overview = overview
+        cell.overviewLabel.text = overview.truncate(length: 140,trailing: "...")
+
         // If image is available use it
         if let posterPathString = movie["poster_path"] as? String {
             
