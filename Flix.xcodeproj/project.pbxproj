@@ -102,6 +102,7 @@
 			children = (
 				1B5BD29720205E4700CCB55A /* NowPlayingViewController.swift */,
 				1B7427EE202AF1BA00754F6D /* DetailViewController.swift */,
+				1B7427F2202AFAC900754F6D /* SuperheroViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -111,7 +112,6 @@
 			children = (
 				1B496D372020EC7C008E3B0D /* MovieCell.swift */,
 				1B7427F0202AFA7100754F6D /* PosterCell.swift */,
-				1B7427F2202AFAC900754F6D /* SuperheroViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

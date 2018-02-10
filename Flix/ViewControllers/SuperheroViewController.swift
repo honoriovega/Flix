@@ -19,6 +19,8 @@ class SuperheroViewController: UIViewController,UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
+        
+        
         fetchMovies()
         // Do any additional setup after loading the view.
     }
