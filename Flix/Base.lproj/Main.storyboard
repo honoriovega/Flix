@@ -90,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="721.5" y="147.5"/>
+            <point key="canvasLocation" x="601" y="148"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="HFm-s6-JVn">
@@ -148,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EqJ-Gb-3kB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031.5" y="138.5"/>
+            <point key="canvasLocation" x="1150" y="147"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="o18-HK-3ZR">
@@ -188,7 +188,7 @@
             </objects>
             <point key="canvasLocation" x="-527" y="147"/>
         </scene>
-        <!--Superhero View Controller-->
+        <!--Superhero-->
         <scene sceneID="9AO-Wx-kOk">
             <objects>
                 <viewController id="6Oo-mo-YM9" customClass="SuperheroViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
@@ -226,6 +226,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="posterImageView" destination="99H-mp-TuB" id="Nde-UD-fV4"/>
+                                            <segue destination="QKl-Rg-nM0" kind="push" id="7PI-qt-Wea"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -233,14 +234,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" id="U9W-Jr-H34"/>
+                    <navigationItem key="navigationItem" title="Superhero" id="U9W-Jr-H34"/>
                     <connections>
                         <outlet property="collectionView" destination="0Yt-WU-J3b" id="0rv-vW-2n6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGf-Ce-WXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-314.5" y="875.5"/>
+            <point key="canvasLocation" x="85" y="876"/>
         </scene>
         <!--Superhero-->
         <scene sceneID="7zA-Q4-kjK">
@@ -266,4 +267,7 @@
         <image name="now_playing_tabbar_item" width="21" height="21"/>
         <image name="superhero_tabbar_item" width="21" height="23"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7PI-qt-Wea"/>
+    </inferredMetricsTieBreakers>
 </document>

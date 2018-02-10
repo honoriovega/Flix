@@ -98,6 +98,16 @@ class SuperheroViewController: UIViewController,UICollectionViewDataSource {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! DetailViewController
+        let cell = sender as! PosterCell
+        let indexPaths = self.collectionView.indexPath(for: cell)
+        let movie = self.movies[indexPaths!.row]
+        vc.movie = movie
+
+
+    }
+    
     /*
     // MARK: - Navigation
 
