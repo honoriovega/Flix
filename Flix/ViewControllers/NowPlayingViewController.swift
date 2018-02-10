@@ -9,6 +9,8 @@
 import UIKit
 import AlamofireImage
 
+
+// Used to trim some text
 // taken from https://gist.github.com/ViccAlexander/0224ab078f76a3af6d79986369d5240b
 extension String {
     /**
@@ -27,7 +29,6 @@ extension String {
         }
     }
 }
-
 
 class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchBarDelegate {
 
@@ -181,7 +182,6 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UISearchB
             detailViewController.movie = movie
         }
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

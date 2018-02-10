@@ -11,14 +11,15 @@ import UIKit
 class PlayTrailerViewController: UIViewController {
     
     
-    var perkeset : String!
+    var trailerUrl : String!
     
     @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Convert the url String to a NSURL object.
-        let requestURL = URL(string:perkeset)
+        let requestURL = URL(string:trailerUrl)
         // Place the URL in a URL Request.
         let request = URLRequest(url: requestURL!)
         // Load Request into WebView.
@@ -35,15 +36,5 @@ class PlayTrailerViewController: UIViewController {
         self.presentingViewController?.dismiss(animated: false, completion:nil)
 
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

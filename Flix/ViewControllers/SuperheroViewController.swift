@@ -65,7 +65,7 @@ class SuperheroViewController: UIViewController,UICollectionViewDataSource {
         
         // If the query is empty just fetch the latest movies
         if(query.isEmpty) {
-            url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
+            url = URL(string: "https://api.themoviedb.org/3/movie/102899/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1")!
             
             // otherwise query for the search term provided
         } else {
@@ -89,8 +89,7 @@ class SuperheroViewController: UIViewController,UICollectionViewDataSource {
                 let movies = dataDictionary["results"] as! [[String : Any]]
                 self.movies = movies
                 self.collectionView.reloadData()
-                //self.refreshControl.endRefreshing()
-                //self.activityIndicator.stopAnimating()
+    
             }
         }
         
@@ -107,15 +106,5 @@ class SuperheroViewController: UIViewController,UICollectionViewDataSource {
 
 
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

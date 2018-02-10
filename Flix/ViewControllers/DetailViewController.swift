@@ -38,7 +38,8 @@ class DetailViewController: UIViewController {
         posterImageView.isUserInteractionEnabled = true
         if let movie = movie {
             let movieId = movie["id"] as? Int
-
+            
+            // function call to API to get the trailer key
             getTrailerUrl(movieId!)
             titleLabel.text = movie[MovieKeys.title] as? String
             releaseDateLabel.text = movie["release_date"] as? String
@@ -73,12 +74,11 @@ class DetailViewController: UIViewController {
             let playTrailerViewController = segue.destination as! PlayTrailerViewController
             let movieId = movie["id"] as? Int
             getTrailerUrl(movieId!)
-            playTrailerViewController.perkeset = self.trailerUrl
+            playTrailerViewController.trailerUrl = self.trailerUrl
             
         }
        
     }
-    
     
     @IBAction func onTap(_ sender: UITapGestureRecognizer) {
         performSegue(withIdentifier: "playTrailer", sender: nil)
@@ -98,7 +98,6 @@ class DetailViewController: UIViewController {
         let task = session.dataTask(with: request) { (data, response,error) in
             
             // This will run when the network request returns
-            
             if let error = error {
                 print(error.localizedDescription)
               
@@ -115,15 +114,6 @@ class DetailViewController: UIViewController {
         task.resume()
 
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
