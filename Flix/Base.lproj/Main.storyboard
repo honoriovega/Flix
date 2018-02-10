@@ -112,6 +112,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sxO-my-ZN3">
                                 <rect key="frame" x="16" y="269" width="149" height="190"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="g2B-OC-KGs" appends="YES" id="h1B-OI-1dV"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wonder woman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2S-FS-rDt">
                                 <rect key="frame" x="219" y="378" width="120" height="21"/>
@@ -144,11 +148,54 @@
                         <outlet property="posterImageView" destination="sxO-my-ZN3" id="GaZ-wh-3q6"/>
                         <outlet property="releaseDateLabel" destination="hAr-Dq-4tI" id="KIJ-3a-xeH"/>
                         <outlet property="titleLabel" destination="g2S-FS-rDt" id="ZzF-bD-Ef4"/>
+                        <segue destination="I8A-p1-geL" kind="modal" identifier="playTrailer" id="wvF-1p-qGw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EqJ-Gb-3kB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="g2B-OC-KGs">
+                    <connections>
+                        <action selector="onTap:" destination="QKl-Rg-nM0" id="mAE-25-fFY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1150" y="147"/>
+        </scene>
+        <!--Play Trailer View Controller-->
+        <scene sceneID="cvd-8Z-Ehg">
+            <objects>
+                <viewController id="I8A-p1-geL" customClass="PlayTrailerViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JTx-8s-IRw"/>
+                        <viewControllerLayoutGuide type="bottom" id="YfH-fh-yP3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IoE-lM-4yz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9K0-KE-DUM">
+                                <rect key="frame" x="24" y="46" width="30" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="dismissModal:" destination="I8A-p1-geL" eventType="touchUpInside" id="Pfy-c6-Wrt"/>
+                                </connections>
+                            </button>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wpG-JP-cBF">
+                                <rect key="frame" x="0.0" y="95" width="375" height="564"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="wpG-JP-cBF" id="OAc-LG-tBS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j7f-r4-kQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1689.5" y="147.5"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="o18-HK-3ZR">
