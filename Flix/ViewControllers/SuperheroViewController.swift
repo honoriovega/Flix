@@ -20,6 +20,17 @@ class SuperheroViewController: UIViewController,UICollectionViewDataSource {
         super.viewDidLoad()
         collectionView.dataSource = self
         
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = layout.minimumInteritemSpacing
+        
+        let cellsPerLine : CGFloat = 2
+        let interItemSpacingTotal = layout.minimumLineSpacing * (cellsPerLine - 1)
+        let width = collectionView.frame.size.width / cellsPerLine - interItemSpacingTotal / cellsPerLine
+        
+        layout.itemSize = CGSize(width : width, height:  width * 3.0/2.0)
+        
         
         fetchMovies()
         // Do any additional setup after loading the view.
