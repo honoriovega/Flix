@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,19 +18,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="launch_image" translatesAutoresizingMaskIntoConstraints="NO" id="OjM-UO-btI">
-                                <rect key="frame" x="118" y="236" width="138" height="139"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="launch_image" translatesAutoresizingMaskIntoConstraints="NO" id="OjM-UO-btI">
+                                <rect key="frame" x="118" y="264" width="138" height="139"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="139" id="DDx-pu-3vq"/>
+                                    <constraint firstAttribute="width" constant="138" id="Uzp-V4-mBO"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Flix" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pey-ox-hCN">
-                                <rect key="frame" x="158" y="383" width="58" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flix" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pey-ox-hCN">
+                                <rect key="frame" x="158" y="411" width="58" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="8t1-SU-44z"/>
+                                    <constraint firstAttribute="width" constant="58" id="dDe-oe-Mvs"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OjM-UO-btI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Np2-pg-nfJ"/>
+                            <constraint firstItem="OjM-UO-btI" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="adc-tt-OXx"/>
+                            <constraint firstItem="pey-ox-hCN" firstAttribute="centerX" secondItem="OjM-UO-btI" secondAttribute="centerX" id="hde-O0-JPE"/>
+                            <constraint firstItem="pey-ox-hCN" firstAttribute="top" secondItem="OjM-UO-btI" secondAttribute="bottom" constant="8" id="ryo-8N-KLa"/>
+                            <constraint firstItem="pey-ox-hCN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xPB-mF-AE2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
