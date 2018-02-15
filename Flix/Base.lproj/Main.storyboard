@@ -21,9 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C0c-fK-uss">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C0c-fK-uss">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.076150592490000002" blue="0.1107551861" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="nDy-Bx-Caj">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
@@ -77,6 +76,12 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.32473546180000001" green="0.51281961909999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="C0c-fK-uss" secondAttribute="bottom" id="KRA-cu-o8M"/>
+                            <constraint firstItem="C0c-fK-uss" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="qf8-hk-oRB"/>
+                            <constraint firstAttribute="trailing" secondItem="C0c-fK-uss" secondAttribute="trailing" id="v8A-NN-Suc"/>
+                            <constraint firstItem="C0c-fK-uss" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vD3-ve-mRC"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="bvT-bE-mRQ"/>
                     <connections>
